@@ -1,0 +1,28 @@
+
+<main>
+    <nav>
+        <p><a [routerLink] = "['/new']">Add an author</a></p>
+    </nav>
+    <section>
+        <table>
+            <caption>We have quotes by:</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Author</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let element of allAuthors">
+                    <td class="b1"  >
+                        {{ element.authorName }}
+                    </td>
+                    <td class="b6">
+                        <button class="button" [routerLink] = "['/edit', element.id]"  >Edit</button>
+                        <button  class="button" (click) = "destroyAuthor(element.id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
