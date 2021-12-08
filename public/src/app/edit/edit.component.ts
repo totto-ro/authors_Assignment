@@ -25,13 +25,11 @@ export class EditComponent implements OnInit {
     };
   }
 
-
-
 getAuthor( id:string ): void{
   let observable = this._authorService.getOneAuthor( id );
   
   observable.subscribe( (data:any) =>{
-    this.AuthorByID = data[0];
+    this.AuthorByID = data;
     console.log("One result By ID: ", this.AuthorByID)
   },
   ( error: any ) => {
@@ -42,7 +40,7 @@ getAuthor( id:string ): void{
 
   
   editAuthor(event: any ): void{
-    console.log("trying to edit: ", this.currentAuthor)
+    console.log("Changing author name to: ", this.currentAuthor)
     let observable = this._authorService.updateAuthor(this.id, this.currentAuthor);
     console.log("Author to edit: ", this.id)
     observable.subscribe( (data : any) =>{
